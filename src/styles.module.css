@@ -1,9 +1,50 @@
-/* add css module styles here (optional) */
+.cardCarousel {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  margin: 100px auto;
+  align-items: center;
+  position: relative;
+}
 
-.test {
-  margin: 2em;
-  padding: 0.5em;
-  border: 2px solid #000;
-  font-size: 2em;
-  text-align: center;
+.card {
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #eeeeee;
+  padding: 30px;
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
+  width: 420px;
+  height: 200px;
+  transition: all 0.75s ease;
+  opacity: 0; 
+  position: absolute;
+  transform: scale(1) translateX(50px);
+}
+
+.card h2,
+.card p {
+  line-height: 1.5;
+  margin: 0;
+}
+
+.card.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  box-shadow: 0 30px 20px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+.card.next {
+  opacity: 0.3;
+  z-index: 2;
+  transform: scale(1) translateX(50px);
+}
+
+.card.prev {
+  transform: scale(1) translateX(-50px);
+  z-index: 1;
+  opacity: 0.3;
+  
 }
