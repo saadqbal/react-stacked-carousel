@@ -1,21 +1,21 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import styles from './styles.module.css'
 
-const cardItems = [
+const defaultCardItems = [
   (
-    <div>
+    <div key="key1">
       <h2>First Item</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   ),
   (
-    <div>
+    <div key="key2">
       <h2>Second Item</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   ),
   (
-    <div>
+    <div key="key3">
       <h2>Third Item</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
@@ -34,13 +34,13 @@ const setCardStatus = (indexes, cardIndex) => {
   return styles.inactive;
 }
 
-export const StackedCarousel = ({cardClassName, autoRotate=true, children}) => {
+export const StackedCarousel = ({containerClassName, cardClassName, autoRotate=true, children}) => {
   const [indexes, setIndexes] = useState({
     previousIndex: 0,
     currentIndex: 0,
     nextIndex: 1
   });
-  const cardItems = children || cardItems
+  const cardItems = children || defaultCardItems;
   const handleCardTransition = useCallback(() => {
     // If we've reached the end, start again from the first card,
     // but carry previous value over
@@ -63,20 +63,16 @@ export const StackedCarousel = ({cardClassName, autoRotate=true, children}) => {
   }, [indexes.currentIndex]);
 
   useEffect(() => {
-
-
     const transitionInterval = setInterval(() => {
       autoRotate && handleCardTransition();
     }, 2000);
-
     return () => clearInterval(transitionInterval);
   }, [handleCardTransition, indexes, autoRotate]);
 
-  console.log(children)
 
   return (
     <div className={styles.container}>
-      <ul className={styles.cardCarousel}>
+      <ul className={`${styles.cardCarousel} ${containerClassName}`}>
 
         {cardItems.map((card, index) => (
           <li

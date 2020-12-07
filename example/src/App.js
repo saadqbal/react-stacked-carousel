@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {StyleSheet} from 'react'
 
 import { StackedCarousel } from 'react-stacked-carousel'
 import 'react-stacked-carousel/dist/index.css';
+
 
 const App = () => {
 
@@ -10,6 +11,8 @@ const App = () => {
       <h1>THis is a test</h1>
       <StackedCarousel
         autoRotate={true}
+        containerClassName={"container"}
+        cardClassName="card"
         >
         <div key={'child1'}>
           <h2>First Card</h2>

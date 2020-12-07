@@ -1,20 +1,10 @@
 .cardCarousel {
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  height: 149px;
-  width: 139px;
-  margin: 100px auto;
-  align-items: center;
   position: relative;
 }
 
 .card {
-  background: #ffffff;
-  border-radius: 8px;
-  border: 1px solid #eeeeee;
-  padding: 30px;
   width: 100%;
   height: 100%;
   box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
@@ -22,12 +12,6 @@
   opacity: 0; 
   position: absolute;
   transform: scale(1) translateX(50px);
-}
-
-.card h2,
-.card p {
-  line-height: 1.5;
-  margin: 0;
 }
 
 .card.active {
