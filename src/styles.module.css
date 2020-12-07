@@ -1,7 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container span {
+  z-index: 1000;
+  cursor: pointer;
+}
+
+
 .cardCarousel {
   list-style: none;
   padding: 0;
   position: relative;
+  
 }
 
 .card {
@@ -11,7 +27,7 @@
   transition: all 0.75s ease;
   opacity: 0; 
   position: absolute;
-  transform: scale(1) translateX(50px);
+  transform: scale(1) translateX(40px);
 }
 
 .card.active {
@@ -24,11 +40,11 @@
 .card.next {
   opacity: 0.6;
   z-index: 2;
-  transform: scale(0.9) translateX(50px);
+  transform: scale(0.9) translateX(40px);
 }
 
 .card.prev {
-  transform: scale(0.9) translateX(-50px);
+  transform: scale(0.9) translateX(-40px);
   z-index: 1;
   opacity: 0.6;
   
