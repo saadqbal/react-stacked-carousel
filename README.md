@@ -13,16 +13,40 @@ npm install --save react-stacked-carousel
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
 
-import MyComponent from 'react-stacked-carousel'
-import 'react-stacked-carousel/dist/index.css'
+import { StackedCarousel } from 'react-stacked-carousel'
+import 'react-stacked-carousel/dist/index.css';
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const App = () => {
+
+  return (
+    <div>
+      <h1>The Stacked cards Carousel</h1>
+      <StackedCarousel
+        autoRotate={true}
+        >
+        <div key={'child1'}>
+          <h2>First Card</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div key={'child2'}>
+          <h2>Second Card</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div key={'child3'}>
+          <h2>Third Card</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        
+      </StackedCarousel>
+
+      </div>
+  )
 }
+
+export default App
+
 ```
 
 ## License

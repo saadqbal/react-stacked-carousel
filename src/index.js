@@ -1,33 +1,29 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import styles from './styles.module.css'
 
-
 const cardItems = [
-  {
-    id: 1,
-    title: "Stacked Card Carousel",
-    copy:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet dui scelerisque, tempus dui non, blandit nulla. Etiam sed interdum est."
-  },
-  {
-    id: 2,
-    title: "Second Item",
-    copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-  },
-  {
-    id: 3,
-    title: "A Third Card",
-    copy:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet dui scelerisque, tempus dui non, blandit nulla."
-  },
-  {
-    id: 4,
-    title: "Fourth",
-    copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-  }
+  (
+    <div>
+      <h2>First Item</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  ),
+  (
+    <div>
+      <h2>Second Item</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  ),
+  (
+    <div>
+      <h2>Third Item</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  )
 ];
 
-function determineClasses(indexes, cardIndex) {
+
+const setCardStatus = (indexes, cardIndex) => {
   if (indexes.currentIndex === cardIndex) {
     return  styles.active;
   } else if (indexes.nextIndex === cardIndex) {
@@ -38,13 +34,13 @@ function determineClasses(indexes, cardIndex) {
   return styles.inactive;
 }
 
-export const StackedCarousel = () => {
+export const StackedCarousel = ({cardClassName, autoRotate=true, children}) => {
   const [indexes, setIndexes] = useState({
     previousIndex: 0,
     currentIndex: 0,
     nextIndex: 1
   });
-
+  const cardItems = children || cardItems
   const handleCardTransition = useCallback(() => {
     // If we've reached the end, start again from the first card,
     // but carry previous value over
@@ -67,23 +63,27 @@ export const StackedCarousel = () => {
   }, [indexes.currentIndex]);
 
   useEffect(() => {
+
+
     const transitionInterval = setInterval(() => {
-      handleCardTransition();
-    }, 4000);
+      autoRotate && handleCardTransition();
+    }, 2000);
 
     return () => clearInterval(transitionInterval);
-  }, [handleCardTransition, indexes]);
+  }, [handleCardTransition, indexes, autoRotate]);
+
+  console.log(children)
 
   return (
     <div className={styles.container}>
       <ul className={styles.cardCarousel}>
+
         {cardItems.map((card, index) => (
           <li
-            key={card.id}
-            className={`${styles.card} ${determineClasses(indexes, index)}`}
+            key={card.key}
+            className={`${cardClassName} ${styles.card} ${setCardStatus(indexes, index)}`}
           >
-            <h2>{card.title}</h2>
-            <p>{card.copy}</p>
+            { card }
           </li>
         ))}
       </ul>
