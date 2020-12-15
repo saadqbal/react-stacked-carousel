@@ -68,17 +68,17 @@ export const StackedCarousel = ({containerClassName, cardClassName, leftButton="
     // but carry previous value over
     if (indexes.currentIndex <= 0) {
       setIndexes({
-        previousIndex: 0,
+        previousIndex: cardItems.length - 2,
         currentIndex: cardItems.length - 1,
-        nextIndex: cardItems.length - 2
+        nextIndex: 0
       });
+
     } else {
       setIndexes(prevState => ({
-        previousIndex: prevState.currentIndex,
+        nextIndex: prevState.currentIndex,
         currentIndex: prevState.currentIndex - 1,
-        nextIndex2: prevState.currentIndex - 2,
-        nextIndex:
-          prevState.currentIndex - 2 <= 0
+        previousIndex:
+          prevState.currentIndex - 1 <= 0
             ? cardItems.length - 1
             : prevState.currentIndex - 2
       }));
