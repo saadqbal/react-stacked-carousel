@@ -2,9 +2,6 @@ import React, {StyleSheet} from 'react'
 
 import { StackedCarousel } from 'react-stacked-carousel'
 import 'react-stacked-carousel/dist/index.css';
-import Xray1 from './assets/xray1.png'
-import Xray2 from './assets/xray2.png';
-import Xray3 from './assets/xray3.png';
 
 const App = () => {
 
@@ -19,11 +16,6 @@ const App = () => {
         rightButton={<button>{">"}</button>}
 
       >
-        {/* <img key={'child1'} src={Xray1} style={{ width: 'inherit' }} />
-        <img key={'child2'} src={Xray2} style={{ width: 'inherit' }} />
-        <img key={'child3'} src={Xray3} style={{ width: 'inherit' }} />
-        <img key={'child4'} src={Xray3} style={{ width: 'inherit' }} />
-        <img key={'child5'} src={Xray3} style={{ width: 'inherit'}} /> */}
 
         <div key={'child6'}>
           <h2>1 Card</h2>
