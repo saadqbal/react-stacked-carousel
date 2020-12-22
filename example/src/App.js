@@ -1,15 +1,23 @@
-import React, {StyleSheet} from 'react'
+import React, {StyleSheet, useState} from 'react'
 
 import { StackedCarousel } from 'react-stacked-carousel'
 import 'react-stacked-carousel/dist/index.css';
 
 const App = () => {
 
+  const [card, setCard] = useState(null);
+
+  const onCardChange = (event) => {
+    console.log("Card", event);
+  }
+  
+
   return (
     <div>
       <h1>THis is a test</h1>
       <StackedCarousel
         autoRotate={false}
+        onCardChange={onCardChange}
         containerClassName={"container"}
         cardClassName="card"
         leftButton={<button>{"<"}</button>}

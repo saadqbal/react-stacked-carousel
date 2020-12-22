@@ -34,7 +34,7 @@ const setCardStatus = (indexes, cardIndex) => {
   return styles.inactive;
 }
 
-export const StackedCarousel = ({containerClassName, cardClassName, leftButton="<", rightButton=">", autoRotate=true, children}) => {
+export const StackedCarousel = ({onCardChange, containerClassName, cardClassName, leftButton="<", rightButton=">", autoRotate=true, children}) => {
   const cardItems = children || defaultCardItems;
   const [indexes, setIndexes] = useState({
     previousIndex: cardItems.length-1,
@@ -87,6 +87,7 @@ export const StackedCarousel = ({containerClassName, cardClassName, leftButton="
 
   
   useEffect(() => {
+    onCardChange(indexes);
     const transitionInterval = setInterval(() => {
       autoRotate && handleCardTransition();
     }, 2000);
