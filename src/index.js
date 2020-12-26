@@ -24,6 +24,10 @@ const defaultCardItems = [
 
 
 const setCardStatus = (indexes, cardIndex) => {
+
+
+  console.log(indexes, cardIndex);
+
   if (indexes.currentIndex === cardIndex) {
     return  styles.active;
   } else if (indexes.nextIndex === cardIndex) {
@@ -34,7 +38,7 @@ const setCardStatus = (indexes, cardIndex) => {
   return styles.inactive;
 }
 
-export const StackedCarousel = ({onCardChange, containerClassName, cardClassName, leftButton="<", rightButton=">", autoRotate=true, children}) => {
+export const StackedCarousel = ({ style, onCardChange, containerClassName, cardClassName, leftButton, rightButton, autoRotate=true, rotationInterval=2000, children}) => {
   const cardItems = children || defaultCardItems;
   const [indexes, setIndexes] = useState({
     previousIndex: cardItems.length-1,
@@ -87,29 +91,27 @@ export const StackedCarousel = ({onCardChange, containerClassName, cardClassName
 
   
   useEffect(() => {
-    onCardChange(indexes);
+    onCardChange && onCardChange(indexes);
     const transitionInterval = setInterval(() => {
       autoRotate && handleCardTransition();
-    }, 2000);
+    }, rotationInterval);
     return () => clearInterval(transitionInterval);
   }, [handleCardTransition, indexes, autoRotate]);
 
-
-  console.log(indexes)
   return (
     <div className={`${styles.container}`}>
-      <span onClick={handleLeftButton} >{leftButton}</span>
-      <ul className={`${styles.cardCarousel} ${containerClassName}`}>
+      { leftButton ? leftButton : <span className={styles.leftButton} onClick={handleLeftButton} >&lsaquo;</span>}
+      <ul style={{...style}} className={`${styles.cardCarousel} ${containerClassName? containerClassName : styles.carouselDefault}`}>
         {cardItems.map((card, index) => (
           <li
             key={card.key}
-            className={`${cardClassName} ${styles.card} ${setCardStatus(indexes, index)}`}
+            className={`${ cardClassName ? cardClassName : ''} ${styles.card} ${setCardStatus(indexes, index)}`}
           >
             { card }
           </li>
         ))}
         </ul>
-        <span onClick={handleCardTransition} >{rightButton}</span>
+        { rightButton ? rightButton : <span className={styles.rightButton} onClick={handleCardTransition} >&rsaquo;</span>}
     </div>
   );
 }

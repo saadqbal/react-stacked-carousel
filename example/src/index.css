@@ -17,14 +17,21 @@ code {
     monospace;
 }
 
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
 .container {
   background-color: #ffffff;
-  width: 139px;
-  height: 149px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
+  margin: 20px;
+  width: 200px;
+  height: 200px;
 }
 
 .card {

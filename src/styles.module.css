@@ -4,7 +4,6 @@
   align-items: center;
   margin: auto;
   padding: 0;
-  
 }
 
 .container span {
@@ -12,21 +11,45 @@
   cursor: pointer;
 }
 
-
 .cardCarousel {
   list-style: none;
   padding: 0;
   position: relative;
-  
+}
+
+.carouselDefault {
+  width: 300px;
+  height: 200px;
+  margin: 20px;
+}
+
+.leftButton {
+  color: cornflowerblue;
+  font-size: 2em;
+  padding: 5px;
+}
+
+.rightButton {
+  color: cornflowerblue;
+  font-size: 2em;
+  padding: 5px;
 }
 
 .card {
-
+  width: 100%;
+  height: 100%;
   box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease-in-out;
   opacity: 0; 
   position: absolute;
   transform: scale(1) translateX(40px);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .card.active {
@@ -45,5 +68,10 @@
   transform: scale(0.9) translateX(-40px);
   z-index: 1;
   opacity: 0.6;
-  
+}
+
+.card.inactive {
+  transform: scale(1) translateX(0px);
+  z-index: 1;
+  opacity: 0;
 }
