@@ -100,7 +100,11 @@ export const StackedCarousel = ({ style, onCardChange, containerClassName, cardC
 
   return (
     <div className={`${styles.container}`}>
-      { leftButton ? leftButton : <span className={styles.leftButton} onClick={handleLeftButton} >&lsaquo;</span>}
+      {
+        leftButton ?
+          <span onClick={handleLeftButton}>{leftButton}</span>
+          : <span className={styles.leftButton} onClick={handleLeftButton}>&lsaquo;</span>
+      }
       <ul style={{...style}} className={`${styles.cardCarousel} ${containerClassName? containerClassName : styles.carouselDefault}`}>
         {cardItems.map((card, index) => (
           <li
@@ -111,7 +115,11 @@ export const StackedCarousel = ({ style, onCardChange, containerClassName, cardC
           </li>
         ))}
         </ul>
-        { rightButton ? rightButton : <span className={styles.rightButton} onClick={handleCardTransition} >&rsaquo;</span>}
+      {
+        rightButton ?
+          <span onClick={handleCardTransition}>{rightButton}</span>
+          : <span className={styles.rightButton} onClick={handleCardTransition}>&rsaquo;</span>
+      }
     </div>
   );
 }
