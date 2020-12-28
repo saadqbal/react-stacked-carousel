@@ -11,7 +11,7 @@ npm install --save react-stacked-carousel
 ```
 
 
-# [Demo](asadiqbal.me/react-stacked-carousel/)
+# [Demo](http://asadiqbal.me/react-stacked-carousel/)
 
 
 
