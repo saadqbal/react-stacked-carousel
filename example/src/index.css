@@ -21,6 +21,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-direction: column;
   padding: 10px;
   min-height: 100vh;
 }

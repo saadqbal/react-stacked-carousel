@@ -29,8 +29,8 @@ const App = () => {
           onCardChange={onCardChange}
           containerClassName={"container"}
           cardClassName="card"
-          leftButton={<span>{"<"}</span>}
-          rightButton={<span>{">"}</span>}>
+          leftButton={<span style={{  marginRight: '10px' }}>{"<"}</span>}
+          rightButton={<span style={{  marginLeft: '10px' }}>{">"}</span>}>
           <div key={'child1'}>
             <h2>1 Card</h2>
           </div>
