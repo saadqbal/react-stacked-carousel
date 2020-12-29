@@ -2,6 +2,8 @@
 
 > Rotating Carousel with stacked cards
 
+![react-stacked-carousel](screen.gif)
+
 [![NPM](https://img.shields.io/npm/v/react-stacked-carousel.svg)](https://www.npmjs.com/package/react-stacked-carousel) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 # Install
