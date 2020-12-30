@@ -24,10 +24,7 @@ const defaultCardItems = [
 
 
 const setCardStatus = (indexes, cardIndex) => {
-
-
-  console.log(indexes, cardIndex);
-
+  // console.log(indexes, cardIndex);
   if (indexes.currentIndex === cardIndex) {
     return  styles.active;
   } else if (indexes.nextIndex === cardIndex) {
