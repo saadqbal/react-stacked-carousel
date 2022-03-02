@@ -23,20 +23,22 @@ const defaultCardItems = [
 ];
 
 
-const setCardStatus = (indexes, cardIndex) => {
+const setCardStatus = (indexes, cardIndex, showSummary=false) => {
   // console.log(indexes, cardIndex);
   if (indexes.currentIndex === cardIndex) {
     return  styles.active;
   } else if (indexes.nextIndex === cardIndex) {
-    return styles.next;
+    return showSummary ? `${styles.noTranslate}`: `${styles.next}`;
   } else if (indexes.previousIndex === cardIndex) {
-    return styles.prev;
+    return  showSummary ? `${styles.noTranslate}`: styles.prev;
   }
   return styles.inactive;
 }
 
-export const StackedCarousel = ({ style, onCardChange, containerClassName, cardClassName, leftButton, rightButton, autoRotate=true, rotationInterval=2000, children}) => {
-  const cardItems = children || defaultCardItems;
+export const StackedCarousel = ({ showSummary, style, onCardChange, containerClassName, cardClassName, leftButton, rightButton, autoRotate=true, rotationInterval=2000, children}) => {
+  let cardItems = showSummary ? [1, ...children] : children || defaultCardItems;
+  
+  console.log(showSummary)
   const [indexes, setIndexes] = useState({
     previousIndex: cardItems.length-1,
     currentIndex: 0,
@@ -102,15 +104,37 @@ export const StackedCarousel = ({ style, onCardChange, containerClassName, cardC
           <span onClick={handleLeftButton}>{leftButton}</span>
           : <span className={styles.leftButton} onClick={handleLeftButton}>&lsaquo;</span>
       }
-      <ul style={{...style}} className={`${styles.cardCarousel} ${containerClassName? containerClassName : styles.carouselDefault}`}>
-        {cardItems.map((card, index) => (
-          <li
-            key={card.key}
-            className={`${ cardClassName ? cardClassName : ''} ${styles.card} ${setCardStatus(indexes, index)}`}
-          >
-            { card }
-          </li>
-        ))}
+      <ul style={{ ...style }} className={`${styles.cardCarousel} ${containerClassName ? containerClassName : styles.carouselDefault}`}>
+        {
+          cardItems.map((card, index) => {
+            if (showSummary && index === 0) {
+              cardItems.shift()
+              return (<li
+                key={'stacked-carousel'}
+                className={`${cardClassName ? cardClassName : ''} ${styles.card} ${styles.cardSummary} ${setCardStatus(indexes, index, showSummary)}`}
+              >
+
+                {cardItems.map((card, index) => (
+                  <div
+                    key={card.key}
+                    className={`${ cardClassName ? cardClassName : ''} ${setCardStatus(indexes, index, showSummary)}`}
+                  >
+                    {card}
+                  </div>
+                ))}
+              </li>)
+            } else {
+              return(
+                <li
+                  key={card.key}
+                  className={`${cardClassName ? cardClassName : ''} ${styles.card} ${setCardStatus(indexes, index, showSummary)}`}
+                >
+                  {card}
+                </li>)
+            }
+          }
+          
+        )}
         </ul>
       {
         rightButton ?

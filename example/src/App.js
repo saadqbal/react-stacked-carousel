@@ -14,11 +14,18 @@ const App = () => {
         <h3>Carousel with images as children</h3>
         <StackedCarousel
           autoRotate={false}
+          showSummary={false}
           onCardChange={onCardChange}>
           <img key="img1" src="https://placeimg.com/640/480/arch" />
           <img key="img2" src="https://placeimg.com/640/480/tech" />
           <img key="img3" src="https://placeimg.com/640/480/nature" />
           <img key="img4" src="https://placeimg.com/640/480/animals" />
+          <img key="img5" src="https://placeimg.com/640/480/tech" />
+          <img key="img6" src="https://placeimg.com/640/480/animals" />
+          <img key="img7" src="https://placeimg.com/641/480/animals" />
+          <img key="img8" src="https://placeimg.com/640/481/nature" />
+          <img key="img9" src="https://placeimg.com/641/480/animals" />
+          <img key="img10" src="https://placeimg.com/640/480/arch" />
         </StackedCarousel>
       </div>
 
