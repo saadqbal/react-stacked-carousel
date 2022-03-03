@@ -108,18 +108,19 @@ export const StackedCarousel = ({ showSummary, style, onCardChange, containerCla
         {
           cardItems.map((card, index) => {
             if (showSummary && index === 0) {
-              cardItems.shift()
+              // cardItems.shift()
+              const cardsGallery = cardItems.slice(1);
               return (<li
                 key={'stacked-carousel'}
                 className={`${cardClassName ? cardClassName : ''} ${styles.card} ${styles.cardSummary} ${setCardStatus(indexes, index, showSummary)}`}
               >
 
-                {cardItems.map((card, index) => (
+                {cardsGallery.map((cardItem, cardIndex) => (
                   <div
-                    key={card.key}
-                    className={`${ cardClassName ? cardClassName : ''} ${setCardStatus(indexes, index, showSummary)}`}
+                    key={cardItem.key}
+                    className={`${ cardClassName ? cardClassName : ''} ${setCardStatus(indexes, cardIndex, showSummary)}`}
                   >
-                    {card}
+                    {cardItem}
                   </div>
                 ))}
               </li>)

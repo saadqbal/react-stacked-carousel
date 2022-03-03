@@ -14,7 +14,7 @@ const App = () => {
         <h3>Carousel with images as children</h3>
         <StackedCarousel
           autoRotate={false}
-          showSummary={false}
+          showSummary={true}
           onCardChange={onCardChange}>
           <img key="img1" src="https://placeimg.com/640/480/arch" />
           <img key="img2" src="https://placeimg.com/640/480/tech" />
